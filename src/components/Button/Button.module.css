@@ -1,0 +1,23 @@
+.headerButton {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 20px;
+  gap: 10px;
+  border-radius: 10px;
+  background: var(--logo-2);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.headerButton svg {
+  min-width: 24px;
+  height: 24px;
+}
+
+.headerButton h4 {
+  white-space: nowrap;
+  color: var(--main-text-color);
+  font-size: 18px;
+  font-weight: 700;
+}
