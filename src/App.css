@@ -1,35 +1,36 @@
 /*П Е Р Е М Е Н Н Ы Е*/
 
 :root {
-  --logo-2: linear-gradient(137deg, #fff76a 0%, #ffce89 100%);
-  --main-text-color: #1e2022;
-  --second-text-color: #acacac;
+    --logo-2: linear-gradient(137deg, #fff76a 0%, #ffce89 100%);
+    --main-text-color: #1e2022;
+    --second-text-color: #acacac;
+    --button-text-font: 'IBM Plex Sans', sans-serif;
 }
 
 /*С Б Р О С   С Т И Л Е Й */
 
 * {
-  padding: 0px;
-  margin: 0px;
-  border: none;
-  font-family: "Roboto";
-  transition: all 0.5s ease;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    font-family: "Roboto";
+    transition: all 0.5s ease;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 a,
 a:link,
 a:visited {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 a:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 aside,
@@ -38,40 +39,26 @@ footer,
 header,
 section,
 main {
-  display: block;
+    display: block;
 }
 
 ul,
 ul li {
-  list-style: none;
+    list-style: none;
 }
 
 img,
 svg {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
+
 .App {
-  min-width: 1440px;
-  padding: 40px;
+    min-width: 1440px;
+    padding: 40px;
 }
 
-.App-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.main-block {
-  display: flex;
-  align-items: center;
-  flex: 1 1 100%;
-}
 
-.main-block__input {
-  display: flex;
-  gap: 20px;
-  flex: 1 1 100%;
-}
 
 
 

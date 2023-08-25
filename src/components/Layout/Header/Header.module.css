@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mainBlock {
+    display: flex;
+    align-items: center;
+    flex: 1 1 100%;
+}
+
+.mainBlockInput {
+    display: flex;
+    gap: 20px;
+    flex: 1 1 100%;
+}

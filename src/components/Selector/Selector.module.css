@@ -1,5 +1,5 @@
 .select {
-    -moz-appearance: none ;
+    -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
     width: 100px;
@@ -10,22 +10,36 @@
     background: #fff;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    font-size: 20px;
+    padding-left: 16px;
 }
+
 .selectWrapper {
     position: relative;
 }
-.selectAvatar{
+
+.selectAvatar {
     position: absolute;
     top: 18px;
     left: 16px;
     pointer-events: none;
 }
-.selectArrow{
+
+.selectArrow {
     position: absolute;
     top: 21px;
     right: 20px;
     pointer-events: none;
 }
+
 .select::-ms-expand {
+    display: none;
+}
+
+option[name="0"] {
+    background-image: url("/public/logo512.png");
+}
+
+.none {
     display: none;
 }
