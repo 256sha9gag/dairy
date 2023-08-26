@@ -5,6 +5,7 @@
     --main-text-color: #1e2022;
     --second-text-color: #acacac;
     --button-text-font: 'IBM Plex Sans', sans-serif;
+    --text: #1E2022;
 }
 
 /*С Б Р О С   С Т И Л Е Й */
@@ -13,8 +14,7 @@
     padding: 0px;
     margin: 0px;
     border: none;
-    font-family: "Roboto";
-    transition: all 0.5s ease;
+    font-family: "Roboto", serif;
 }
 
 *,
