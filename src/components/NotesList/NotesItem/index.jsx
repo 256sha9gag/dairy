@@ -1,11 +1,14 @@
 import styles from "./NotesItem.module.css";
 import { getFormatDate } from "../../../Utils/getFormatDate";
 
-function NotesItem({ note }) {
+function NotesItem({ note, width }) {
   return (
     <article
       className={styles.card}
-      style={{ backgroundImage: `url(${note.foto})` }}
+      style={{
+        width: `${width}px`,
+        backgroundImage: `url(${note.foto})`,
+      }}
     >
       <div className={styles.emoji}>{note.emoji}</div>
       <div className={styles.content}>

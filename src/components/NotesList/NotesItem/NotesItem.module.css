@@ -1,10 +1,13 @@
 .card {
-  width: 325px;
+  min-width: 325px;
   height: 280px;
   position: relative;
   border-radius: 10px;
   background-position: center center;
   background-size: cover;
+  transition: width .2s;
+  box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
 .emoji {
@@ -21,6 +24,7 @@
   top: 14px;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.90);
+
 }
 
 .content {

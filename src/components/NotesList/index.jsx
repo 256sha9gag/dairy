@@ -8,20 +8,20 @@ function NotesList({ container }) {
   const [width, setWidth] = useState(1300);
 
   const widthCalc = useCallback(() => {
-    console.log("calc");
     if (!container.current.offsetWidth) return;
     const contWidth = container.current.offsetWidth;
     let listWidth = 325;
     let counter = 1;
     while (
-      listWidth < contWidth &&
+      listWidth <= contWidth &&
       listWidth < 3000 &&
-      counter < notes.length + 1
+      counter <= notes.length
     ) {
       listWidth += 20 + 325;
       counter++;
     }
-    setWidth(listWidth - 20 - 325);
+    counter--;
+    setWidth((contWidth - 20 * (counter - 1)) / counter);
   }, [container]);
 
   useEffect(() => {
@@ -32,13 +32,10 @@ function NotesList({ container }) {
   }, [container, widthCalc]);
 
   return (
-    <ul
-      className={styles.cardList}
-      style={{ width: `${width ? width : 1300}px` }}
-    >
+    <ul className={styles.cardList}>
       {notes.map((note) => (
         <li key={note.id}>
-          <NotesItem note={note} />
+          <NotesItem note={note} width={width} />
         </li>
       ))}
     </ul>

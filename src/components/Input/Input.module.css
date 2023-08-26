@@ -3,7 +3,7 @@
     border-radius: 10px;
     background: #fff;
     flex: 1 1 auto;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow);
     padding: 20px;
     max-width: 548px;
     outline: none;
