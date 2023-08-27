@@ -1,16 +1,16 @@
 .headerInput {
-    height: 60px;
-    border-radius: 10px;
-    background: #fff;
-    flex: 1 1 auto;
-    box-shadow: var(--shadow);
-    padding: 20px;
-    max-width: 548px;
-    outline: none;
+  height: 60px;
+  border-radius: 10px;
+  background: #fff;
+  flex: 1 1 auto;
+  box-shadow: var(--shadow);
+  padding: 20px;
+  max-width: 548px;
+  outline: none;
 }
 
 .headerInput::placeholder {
-    color: var(--second-text-color);
-    font-size: 18px;
-    font-weight: 300;
+  color: var(--second-text-color);
+  font-size: 18px;
+  font-weight: 300;
 }

@@ -1,12 +1,11 @@
 import styles from "./NotesItem.module.css";
 import { getFormatDate } from "../../../Utils/getFormatDate";
 
-function NotesItem({ note, width }) {
+function NotesItem({ note }) {
   return (
     <article
       className={styles.card}
       style={{
-        width: `${width}px`,
         backgroundImage: `url(${note.foto})`,
       }}
     >

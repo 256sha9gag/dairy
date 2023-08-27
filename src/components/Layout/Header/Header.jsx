@@ -1,8 +1,8 @@
 import React from "react";
-import Logo from "../../Logo";
-import Input from "../../Input";
-import Selector from "../../Selector";
-import Button from "../../Button";
+import Logo from "../../Logo/Logo";
+import Input from "../../Input/Input";
+import Selector from "../../Selector/Selector";
+import Button from "../../Button/Button";
 import styles from "./Header.module.css";
 
 function Header(props) {

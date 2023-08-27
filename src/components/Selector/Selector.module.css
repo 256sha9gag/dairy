@@ -1,45 +1,45 @@
 .select {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100px;
-    height: 60px;
-    flex-shrink: 0;
-    outline: none;
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: var(--shadow);
-    cursor: pointer;
-    font-size: 20px;
-    padding-left: 16px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100px;
+  height: 60px;
+  flex-shrink: 0;
+  outline: none;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-size: 20px;
+  padding-left: 16px;
 }
 
 .selectWrapper {
-    position: relative;
+  position: relative;
 }
 
 .selectAvatar {
-    position: absolute;
-    top: 18px;
-    left: 16px;
-    pointer-events: none;
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  pointer-events: none;
 }
 
 .selectArrow {
-    position: absolute;
-    top: 21px;
-    right: 20px;
-    pointer-events: none;
+  position: absolute;
+  top: 21px;
+  right: 20px;
+  pointer-events: none;
 }
 
 .select::-ms-expand {
-    display: none;
+  display: none;
 }
 
 option[name="0"] {
-    background-image: url("/public/logo512.png");
+  background-image: url("/public/logo512.png");
 }
 
 .none {
-    display: none;
+  display: none;
 }
