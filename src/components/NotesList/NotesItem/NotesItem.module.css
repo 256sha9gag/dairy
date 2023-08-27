@@ -3,12 +3,17 @@
   height: 280px;
   position: relative;
   border-radius: 10px;
-  background-position: center center;
-  background-size: cover;
+  background-size: 130%;
+  background-position: center 30%;
+  background-repeat: no-repeat;
   box-shadow: var(--shadow);
   overflow: hidden;
+  cursor: pointer;
+  transition: background-size linear 0.5s;
 }
-
+.card:hover {
+  background-size: 162%;
+}
 .emoji {
   display: flex;
   align-items: center;

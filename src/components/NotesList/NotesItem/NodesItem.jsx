@@ -1,9 +1,16 @@
 import styles from "./NotesItem.module.css";
 import { getFormatDate } from "../../../Utils/getFormatDate";
+import { Context } from "../../../context";
+import { useContext } from "react";
 
 function NotesItem({ note }) {
+  const { changeModalStatus, updateNoteInModal } = useContext(Context);
   return (
     <article
+      onClick={() => {
+        changeModalStatus();
+        updateNoteInModal(note);
+      }}
       className={styles.card}
       style={{
         backgroundImage: `url(${note.foto})`,
