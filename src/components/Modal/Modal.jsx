@@ -3,6 +3,8 @@ import { getFormatDate } from "../../Utils/getFormatDate";
 import { Context } from "../../context";
 import { useContext, useState } from "react";
 import { closeModal } from "../../Utils/closeModal";
+import normalizeDate from "../../Utils/normalizeDate";
+import Emoji from "../Emoji/Emoji";
 
 function Modal({ note, active }) {
   const { changeModalStatus } = useContext(Context);
@@ -44,11 +46,10 @@ function Modal({ note, active }) {
           </button>
           <div className={styles.titleBlock}>
             <h2 className={styles.title}> {note.title}</h2>
-            <div className={styles.emoji}>{note.emoji}</div>
           </div>
           <div className={styles.content}>
             <div className={styles.contentLeft}>
-              <span className={styles.date}>{getFormatDate(note.date)}</span>
+              <span className={styles.date}>{normalizeDate.long(getFormatDate(note.date))}</span>
               <p className={styles.text}>{note.note}</p>
             </div>
             <div
@@ -56,7 +57,9 @@ function Modal({ note, active }) {
               style={{
                 backgroundImage: `url(${note.foto})`,
               }}
-            ></div>
+            >
+              <Emoji emoji={note.emoji} type='big'/>
+            </div>
           </div>
         </div>
       </div>

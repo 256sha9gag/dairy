@@ -11,23 +11,9 @@
   cursor: pointer;
   transition: background-size linear 0.5s;
 }
+
 .card:hover {
   background-size: 162%;
-}
-.emoji {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 20px;
-  font-size: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  position: absolute;
-  right: 14px;
-  top: 14px;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.90);
 }
 
 .content {
