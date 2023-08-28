@@ -16,7 +16,7 @@ const normalizeDate = {
     const normalizeDate = dateRusLocal[0]
       .toUpperCase()
       .concat(dateRusLocal.slice(1, dateRusLocal.length - 1))
-      .concat('ода.')
+      .concat('ода')
     return normalizeDate;
   },
 }
