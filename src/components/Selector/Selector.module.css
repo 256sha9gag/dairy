@@ -4,7 +4,6 @@
   appearance: none;
   width: 100px;
   height: 60px;
-  flex-shrink: 0;
   outline: none;
   border-radius: 10px;
   background: #fff;
@@ -36,10 +35,28 @@
   display: none;
 }
 
-option[name="0"] {
-  background-image: url("/public/logo512.png");
+option[name='0'] {
+  background-image: url('/public/logo512.png');
 }
 
 .none {
   display: none;
+}
+
+@media (max-width: 1024px) {
+  .select {
+    width: 70px;
+    height: 40px;
+    padding-left: 10px;
+  }
+
+  .selectAvatar {
+    top: 10px;
+    left: 10px;
+  }
+
+  .selectArrow {
+    top: 14px;
+    right: 10px;
+  }
 }

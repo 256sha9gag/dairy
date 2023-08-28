@@ -3,11 +3,12 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
+  position: relative;
 }
 
 .mainBlock {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex: 1 1 100%;
 }
 
@@ -15,4 +16,31 @@
   display: flex;
   gap: 20px;
   flex: 1 1 100%;
+}
+
+.buttonBlock {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@media (max-width: 1440px) {
+  .mainBlock {
+    flex-direction: column;
+    row-gap: 40px;
+  }
+
+  .mainBlockInput {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1440px) {
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .mainBlock {
+    row-gap: 20px;
+  }
 }

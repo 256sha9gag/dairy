@@ -7,10 +7,24 @@
   padding: 20px;
   max-width: 548px;
   outline: none;
+  font-size: 18px;
+  font-weight: 300;
 }
 
 .headerInput::placeholder {
   color: var(--second-text-color);
-  font-size: 18px;
-  font-weight: 300;
+}
+
+@media (max-width: 1440px) {
+  .headerInput {
+    max-width: unset;
+  }
+}
+
+@media (max-width: 1024px) {
+  .headerInput {
+    height: 40px;
+    padding: 10px;
+    font-size: 12px;
+  }
 }

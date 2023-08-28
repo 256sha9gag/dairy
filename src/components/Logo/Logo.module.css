@@ -8,7 +8,6 @@
 .logoIcon {
   width: 60px;
   height: 60px;
-  flex-shrink: 0;
   border-radius: 10px;
   background: var(--logo-2);
   padding: 13px;
@@ -18,4 +17,20 @@
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   font-size: 36px;
   color: var(--main-text-color);
+}
+
+@media (max-width: 1024px) {
+  .logo {
+    gap: 12px;
+  }
+
+  .logoIcon {
+    width: 40px;
+    height: 40px;
+    padding: 8.67px;
+  }
+
+  .logoTitle {
+    font-size: 24px;
+  }
 }
