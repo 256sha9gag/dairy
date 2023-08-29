@@ -11,7 +11,7 @@
   top: 0;
   left: 0;
   position: absolute;
-  width: 100vw;
+  width: 99vw;
   height: 1140px;
   padding: 128px 40px;
   background-color: rgba(0, 0, 0, 0.356);
@@ -90,7 +90,7 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 10px;
   background-position: center;
   background-size: cover;
   grid-area: image;
@@ -161,8 +161,6 @@
     top: unset;
     bottom: 20px;
     right: 20px;
-    width: 25px;
-    height: 25px;
   }
 
   .closeBtn {

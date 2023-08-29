@@ -35,7 +35,7 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1024px) {
   .header {
     margin-bottom: 20px;
   }

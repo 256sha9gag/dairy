@@ -1,7 +1,7 @@
 import styles from './Modal.module.css';
 import { getFormatDate } from '../../Utils/getFormatDate';
 import { Context } from '../../context';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { closeModal } from '../../Utils/closeModal';
 import normalizeDate from '../../Utils/normalizeDate';
 import Emoji from '../Emoji/Emoji';
@@ -9,20 +9,28 @@ import Emoji from '../Emoji/Emoji';
 function Modal({ note, active }) {
   const { changeModalStatus } = useContext(Context);
   const [activeClass, setActiveClass] = useState('');
-  setTimeout(() => {
-    return active
-      ? setActiveClass(styles.modalBlockActive)
-      : setActiveClass('');
-  }, 800);
+
+  useEffect(() => {
+    const handleCloseModal = (e) => {
+      if (e.target.classList.contains(styles.blackout))
+        closeModal(changeModalStatus, setActiveClass);
+    };
+    window.addEventListener('click', handleCloseModal);
+    return () => window.removeEventListener('click', handleCloseModal);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      return active
+        ? setActiveClass(styles.modalBlockActive)
+        : setActiveClass('');
+    }, 800);
+  }, [active]);
 
   return (
     <div className={`${styles.modalBlock} ${activeClass}`}>
-      <div
-        className={styles.blackout}
-        onClick={() => {
-          closeModal(changeModalStatus, setActiveClass);
-        }}
-      >
+      <div className={styles.blackout}>
         <div className={`${styles.window} ${active && styles.windowActive}`}>
           <div className={styles.modal}>
             <button
