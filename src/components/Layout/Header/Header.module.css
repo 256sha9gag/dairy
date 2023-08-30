@@ -24,7 +24,12 @@
   right: 0;
 }
 
-@media (max-width: 1440px) {
+.headerInput {
+  flex: 1 1 auto;
+  max-width: 548px;
+}
+
+@media (max-width: 1439px) {
   .mainBlock {
     flex-direction: column;
     row-gap: 40px;
@@ -33,14 +38,39 @@
   .mainBlockInput {
     width: 100%;
   }
+
+  .headerInput {
+    max-width: unset;
+  }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .header {
     margin-bottom: 20px;
   }
 
   .mainBlock {
     row-gap: 20px;
+  }
+
+  .headerInput {
+    height: 40px;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .headerButton {
+    height: 40px;
+    width: 40px;
+    padding: 0;
+  }
+
+  .headerButton svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .headerButton h4 {
+    display: none;
   }
 }

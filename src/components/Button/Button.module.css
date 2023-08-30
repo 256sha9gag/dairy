@@ -1,4 +1,4 @@
-.headerButton {
+.mainButton {
   display: flex;
   height: 60px;
   align-items: center;
@@ -11,12 +11,12 @@
   cursor: pointer;
 }
 
-.headerButton svg {
+.mainButton svg {
   width: 24px;
   height: 24px;
 }
 
-.headerButton h4 {
+.mainButton h4 {
   font-family: var(--button-text-font);
   white-space: nowrap;
   color: var(--main-text-color);
@@ -24,19 +24,17 @@
   font-weight: 700;
 }
 
-@media (max-width: 1024px) {
-  .headerButton {
+@media (max-width: 1023px) {
+  .mainButton {
     height: 40px;
-    width: 40px;
-    padding: 0;
   }
 
-  .headerButton svg {
-    width: 20px;
-    height: 20px;
+  .mainButton h4 {
+    font-size: 14px;
   }
 
-  .headerButton h4 {
-    display: none;
+  .mainButton svg {
+    width: 18px;
+    height: 18px;
   }
 }

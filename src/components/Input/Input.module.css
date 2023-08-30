@@ -1,30 +1,15 @@
-.headerInput {
+.mainInput {
   height: 60px;
   border-radius: 10px;
   background: #fff;
-  flex: 1 1 auto;
+
   box-shadow: var(--shadow);
   padding: 20px;
-  max-width: 548px;
   outline: none;
   font-size: 18px;
   font-weight: 300;
 }
 
-.headerInput::placeholder {
+.mainInput::placeholder {
   color: var(--second-text-color);
-}
-
-@media (max-width: 1440px) {
-  .headerInput {
-    max-width: unset;
-  }
-}
-
-@media (max-width: 1024px) {
-  .headerInput {
-    height: 40px;
-    padding: 10px;
-    font-size: 12px;
-  }
 }

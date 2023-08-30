@@ -64,7 +64,7 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
-  color: var(--text-date-color);
+  color: var(--second-text-color);
 }
 
 .date::first-letter {

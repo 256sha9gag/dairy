@@ -56,13 +56,17 @@ body {
   background: #fdfcf3;
 }
 
-@media (max-width: 1440px) {
+body {
+  min-width: 320px;
+}
+
+@media (max-width: 1439px) {
   .App {
     padding: 40px 80px;
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .App {
     min-width: 320px;
     padding: 20px;

@@ -11,6 +11,7 @@
   border-radius: 10px;
   background: var(--logo-2);
   padding: 13px;
+  cursor: pointer;
 }
 
 .logoTitle {
@@ -19,7 +20,7 @@
   color: var(--main-text-color);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .logo {
     gap: 12px;
   }

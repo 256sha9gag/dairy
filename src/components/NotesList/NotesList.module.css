@@ -4,14 +4,14 @@
   gap: 20px;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1439px) {
   .cardList {
     grid-template-columns: repeat(auto-fit, minmax(412px, 1fr));
     gap: 40px;
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .cardList {
     grid-template-columns: repeat(auto-fit, minmax(278px, 1fr));
     gap: 20px;

@@ -87,7 +87,7 @@
   overflow: hidden;
 }
 
-@media (min-width: 1024px) and (max-width: 1440px) {
+@media (min-width: 1023px) and (max-width: 1439px) {
   .card {
     flex-basis: 412px;
     height: 364px;

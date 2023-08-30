@@ -1,0 +1,174 @@
+.addNoteWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+}
+
+.leftBlock {
+  grid-column: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.upperInner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.inputBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.rightBlock {
+  grid-column: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.inputText {
+  width: 100%;
+}
+
+.inputDate {
+  width: 210px;
+}
+
+.flexBlock {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.inputButtonBlock {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.imageChoose {
+  display: none;
+  height: 160px;
+  min-width: 220px;
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.chooseWrapper {
+  backdrop-filter: blur(5px);
+}
+
+.chooseBlock {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.inputSearchImg {
+  margin-right: 20px;
+}
+
+@media (max-width: 1439px) {
+  .addNoteWrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .upperInner {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .imageChoose {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .inputDate {
+    width: 272px;
+  }
+
+  .rightBlock {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .leftBlock {
+    gap: 20px;
+  }
+
+  .addNoteWrapper {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .upperInner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .imageChoose {
+    order: 1;
+    width: 100%;
+    height: 200px;
+  }
+
+  .inputBlock {
+    gap: 20px;
+  }
+
+  .flexBlock {
+    flex-direction: row-reverse;
+    gap: 20px;
+  }
+
+  .inputText {
+    height: 40px;
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .inputDate {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .textareaMain {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .leftBlock {
+    order: 1;
+  }
+
+  .inputBlock {
+    order: 2;
+  }
+
+  .addNoteButton {
+    width: 100%;
+    height: 40px;
+    font-size: 12px;
+  }
+}
