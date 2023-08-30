@@ -1,76 +1,72 @@
-import styles from './Modal.module.css';
-import { getFormatDate } from '../../Utils/getFormatDate';
-import { Context } from '../../context';
-import { useContext, useEffect, useState } from 'react';
-import { closeModal } from '../../Utils/closeModal';
-import normalizeDate from '../../Utils/normalizeDate';
+import React, { useCallback, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Emoji from '../Emoji/Emoji';
+import normalizeDate from '../../utils/normalizeDate';
+import styles from './Modal.module.css';
 
-function Modal({ note, active }) {
-  const { changeModalStatus } = useContext(Context);
-  const [activeClass, setActiveClass] = useState('');
+function Modal({ note, closeFunction }) {
+  const [isActive, setIsActive] = useState(false);
+  const [onRender, setOnRender] = useState(true);
+
+  const root = document.querySelector('#root');
 
   useEffect(() => {
-    const handleCloseModal = (e) => {
-      if (e.target.classList.contains(styles.blackout))
-        closeModal(changeModalStatus, setActiveClass);
-    };
-    window.addEventListener('click', handleCloseModal);
-    return () => window.removeEventListener('click', handleCloseModal);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setIsActive(true);
   }, []);
 
-  useEffect(() => {
+  const closeWithAnimation = () => {
+    setIsActive(false);
     setTimeout(() => {
-      return active
-        ? setActiveClass(styles.modalBlockActive)
-        : setActiveClass('');
-    }, 800);
-  }, [active]);
+      closeFunction();
+      setOnRender(false);
+    }, 500);
+  };
 
-  return (
-    <div className={`${styles.modalBlock} ${activeClass}`}>
-      <div className={styles.blackout}>
-        <div className={`${styles.window} ${active && styles.windowActive}`}>
-          <div className={styles.modal}>
-            <button
-              className={styles.closeBtn}
-              onClick={() => {
-                closeModal(changeModalStatus, setActiveClass);
-              }}
-            >
-              <svg
-                width='16'
-                height='16'
-                viewBox='0 0 16 16'
-                fill='none'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path
-                  d='M2.22517 0.811082C1.83465 0.420557 1.20148 0.420557 0.81096 0.811082C0.420435 1.20161 0.420435 1.83477 0.81096 2.2253L6.58569 8.00003L0.811019 13.7747C0.420495 14.1652 0.420495 14.7984 0.811019 15.1889C1.20154 15.5794 1.83471 15.5794 2.22523 15.1889L7.99991 9.41424L13.7746 15.1889C14.1651 15.5794 14.7983 15.5794 15.1888 15.1889C15.5793 14.7984 15.5793 14.1652 15.1888 13.7747L9.41412 8.00003L15.1889 2.2253C15.5794 1.83477 15.5794 1.20161 15.1889 0.811082C14.7983 0.420557 14.1652 0.420557 13.7746 0.811082L7.99991 6.58582L2.22517 0.811082Z'
-                  fill='black'
-                />
-              </svg>
-            </button>
-            <h2 className={styles.title}> {note.title}</h2>
-            <span className={styles.date}>
-              {normalizeDate.long(getFormatDate(note.date))}
-            </span>
-            <p className={styles.text}>{note.note}</p>
-            <div
-              className={styles.imgBlock}
-              style={{
-                backgroundImage: `url(${note.foto})`,
-              }}
-            >
-              <div className={styles.emojiPosition}>
-                <Emoji emoji={note.emoji} type={'big'} />
-              </div>
-            </div>
-          </div>
+  const handleOutsideClick = useCallback(
+    (e) => {
+      if (!e.isModal) {
+        closeWithAnimation();
+      }
+    }, // eslint-disable-next-line
+    [closeFunction]
+  );
+
+  if (!root || !onRender) return null;
+  return createPortal(
+    <div className={`${styles.modal} ${isActive ? styles.open : ''}`} onClick={handleOutsideClick}>
+      <article
+        className={styles.modalContent}
+        onClick={(e) => {
+          e.isModal = true;
+        }}
+      >
+        <button className={styles.closeButton} onClick={closeWithAnimation}>
+          <svg
+            className='cross'
+            width='16'
+            height='16'
+            viewBox='0 0 16 16'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              className={styles.crossPath}
+              d='M2.22566 0.811082C1.83514 0.420557 1.20197 0.420557 0.811448 0.811082C0.420924 1.20161 0.420924 1.83477 0.811448 2.2253L6.58618 8.00003L0.811508 13.7747C0.420984 14.1652 0.420983 14.7984 0.811508 15.1889C1.20203 15.5794 1.8352 15.5794 2.22572 15.1889L8.0004 9.41424L13.7751 15.1889C14.1656 15.5794 14.7988 15.5794 15.1893 15.1889C15.5798 14.7984 15.5798 14.1652 15.1893 13.7747L9.41461 8.00003L15.1893 2.2253C15.5799 1.83477 15.5799 1.20161 15.1893 0.811082C14.7988 0.420557 14.1657 0.420557 13.7751 0.811082L8.0004 6.58582L2.22566 0.811082Z'
+              fill='black'
+            />
+          </svg>
+        </button>
+        <h1 className={styles.title}>{note.title}</h1>
+        <p className={styles.date}>{normalizeDate(note.date, 'long')}</p>
+        <div className={styles.photoBlock}>
+          <Emoji emoji={note.emoji} className={styles.emoji} big={'true'} />
+          <img className={styles.photo} src={note.photo} alt={note.title} />
         </div>
-      </div>
-    </div>
+        <div className={styles.textBlock}>
+          <p className={styles.note}>{note.note}</p>
+        </div>
+      </article>
+    </div>,
+    root
   );
 }
 

@@ -1,13 +1,13 @@
-import notes from "../../Utils/notes.json";
-import styles from "./NotesList.module.css";
-import NotesItem from "./NotesItem/NodesItem";
+import notes from '../../utils/notes.json';
+import styles from './NotesList.module.css';
+import NotesItem from './NotesItem/NotesItem';
 
 function NotesList() {
   return (
     <ul className={styles.cardList}>
       {notes.map((note) => (
         <li key={note.id}>
-          <NotesItem note={note}/>
+          <NotesItem note={note} />
         </li>
       ))}
     </ul>

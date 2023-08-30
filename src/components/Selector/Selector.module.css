@@ -35,10 +35,6 @@
   display: none;
 }
 
-option[name='0'] {
-  background-image: url('/public/logo512.png');
-}
-
 .none {
   display: none;
 }

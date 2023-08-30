@@ -1,15 +1,5 @@
-/*П Е Р Е М Е Н Н Ы Е*/
-
-:root {
-  --logo-2: linear-gradient(137deg, #fff76a 0%, #ffce89 100%);
-  --main-text-color: #1e2022;
-  --second-text-color: #acacac;
-  --button-text-font: 'IBM Plex Sans', sans-serif;
-  --text: #1e2022;
-  --shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-}
-
-/*С Б Р О С   С Т И Л Е Й */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&family=Roboto:wght@300;700;900&display=swap');
+@import './vars.css';
 
 * {
   padding: 0px;
@@ -56,6 +46,14 @@ svg {
 
 .App {
   padding: 40px;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fdfcf3;
 }
 
 @media (max-width: 1440px) {

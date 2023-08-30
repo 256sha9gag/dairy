@@ -1,35 +1,22 @@
-.emoji_small {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 20px;
-  font-size: 20px;
+.circle {
+  display: block;
+  position: absolute;
+  top: 14px;
+  right: 14px;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-.emoji_big {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 20px;
-  font-size: 48px;
-  width: 97.087px;
-  height: 97.087px;
-  border-radius: 50%;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(5px);
-  box-sizing: border-box;
+  display: flex;
+  padding-top: 1px;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
 
-@media (max-width: 1024px) {
-  .emoji_big {
-    font-size: 20px;
-    width: 40px;
-    height: 40px;
-  }
+.circleBig {
+  top: 68px;
+  right: 73px;
+  transform: scale(2.5);
 }

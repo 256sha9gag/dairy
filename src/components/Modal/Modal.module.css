@@ -1,180 +1,152 @@
-.modalBlock {
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 127px 40px 128px 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
   opacity: 0;
-  transition: opacity linear 0.5s;
+  box-shadow: var(--boxShadow);
+  transition: opacity 0.5s ease;
+  overflow: auto;
 }
 
-.modalBlockActive {
+.open {
   opacity: 1;
 }
 
-.blackout {
-  top: 0;
-  left: 0;
-  position: absolute;
-  width: 99vw;
-  height: 1140px;
-  padding: 128px 40px;
-  background-color: rgba(0, 0, 0, 0.356);
-  backdrop-filter: blur(5px);
-  z-index: 1;
-}
-
-.window {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  z-index: 2;
-}
-
-.modal {
-  overflow: auto;
+.modalContent {
   position: relative;
+  margin: auto;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 0.65fr;
+  grid-template-rows: auto auto 1fr;
+  gap: 30px 40px;
   width: 100%;
   padding: 30px 40px;
   border-radius: 10px;
-  gap: 20px;
-  background: linear-gradient(112.95deg, #ffffff 0%, #f0f0f0 99.94%);
-  display: grid;
-  grid-template-rows: 56px 21px 718px;
-  grid-template-columns: auto 500px;
-  grid-template-areas:
-    'title title'
-    'date image'
-    'text image';
-}
-
-.closeBtn {
-  position: absolute;
-  background-color: unset;
-  top: 45px;
-  right: 45px;
-  cursor: pointer;
+  position: relative;
 }
 
 .title {
-  font-family: Roboto;
+  grid-column: span 2;
+  color: var(--text);
   font-size: 48px;
   font-weight: 900;
-  letter-spacing: 0em;
-  text-align: left;
-  color: rgba(30, 32, 34, 1);
-  grid-area: title;
+  margin: 0 60px 0 0;
+}
+
+.closeButton {
+  position: absolute;
+  z-index: 1;
+  top: 40px;
+  right: 40px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  margin-left: auto;
+  cursor: pointer;
+  outline: none;
+}
+
+.noteBlock {
+  display: flex;
+  margin-top: 1px;
+  flex-direction: column;
 }
 
 .date {
-  display: block;
-  font-family: Roboto;
   font-size: 18px;
+  font-style: normal;
   font-weight: 300;
-  line-height: 21px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: rgba(153, 153, 153, 1);
-  grid-area: date;
+  color: var(--text-date-color);
 }
 
-.text {
-  width: 100%;
-  font-family: Roboto;
+.date::first-letter {
+  text-transform: uppercase;
+}
+
+.note {
   font-size: 22px;
+  font-style: normal;
   font-weight: 300;
   line-height: 26px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: rgba(30, 32, 34, 1);
-  grid-area: text;
+  margin-bottom: 20px;
 }
 
-.imgBlock {
+.photoBlock {
   position: relative;
-  display: flex;
-  justify-content: flex-end;
+  grid-row: span 2;
+}
+
+.photo {
   width: 100%;
+  height: fit-content;
   border-radius: 10px;
-  background-position: center;
-  background-size: cover;
-  grid-area: image;
+  object-fit: contain;
 }
 
-.emojiPosition {
-  position: absolute;
-  top: 40px;
-  right: 40px;
-}
-
-@media (max-width: 1440px) {
-  .blackout {
-    padding: 80px;
-    height: 1366px;
-  }
-
+@media (max-width: 1439px) {
   .modal {
-    height: 1381px;
-    grid-template-rows: 56px 19px 523px auto;
-    grid-template-columns: unset;
-    grid-template-areas:
-      'title'
-      'date'
-      'image'
-      'text';
-    gap: 30px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .blackout {
-    padding: 20px;
-    height: 568px;
-    min-width: 320px;
-  }
-
-  .modal {
-    padding: 0;
-    height: 924px;
-    grid-template-rows: 190px 21px 14px auto;
-    grid-template-areas:
-      'image'
-      'title'
-      'date'
-      'text';
-    gap: 15px;
+    padding: 117.5px 80px;
   }
 
   .title {
-    padding: 0 20px;
+    grid-column: span 1;
+  }
+
+  .modalContent {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+@media (max-width: 1023px) {
+  .modal {
+    padding: 20px 21px 20px 19px;
+  }
+
+  .modalContent {
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .closeButton {
+    top: 20px;
+    right: 15px;
+  }
+
+  .closeButton svg path {
+    fill: var(--white);
+  }
+
+  .emoji {
+    top: auto;
+    bottom: 22px;
+    right: 20px;
+    transform: scale(1.05);
+  }
+
+  .photoBlock {
+    margin: -20px -20px 5px -20px;
+    order: -1;
+  }
+
+  .title {
     font-size: 18px;
-    font-weight: 700;
   }
 
   .date {
-    padding: 0 20px;
+    color: var(--text);
     font-size: 12px;
   }
 
-  .text {
-    padding: 0 20px;
+  .note {
     font-size: 14px;
-    line-height: normal;
-  }
-
-  .emojiPosition {
-    top: unset;
-    bottom: 20px;
-    right: 20px;
-  }
-
-  .closeBtn {
-    top: 15px;
-    right: 20px;
-    z-index: 99;
-  }
-
-  .closeBtn svg {
-    width: 25px;
-    height: 25px;
-  }
-
-  .closeBtn path {
-    fill: #ffffff;
   }
 }

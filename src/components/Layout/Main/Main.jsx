@@ -1,5 +1,5 @@
-import styles from "./Main.module.css";
-import CardList from "../../NotesList/NodesList";
+import styles from './Main.module.css';
+import CardList from '../../NotesList/NotesList';
 
 function Main() {
   return (

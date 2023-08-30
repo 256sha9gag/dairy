@@ -1,0 +1,11 @@
+:root {
+  --logo-2: linear-gradient(137deg, #fff76a 0%, #ffce89 100%);
+  --main-text-color: #1e2022;
+  --second-text-color: #acacac;
+  --button-text-font: 'IBM Plex Sans', sans-serif;
+  --text: #1e2022;
+  --shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+
+  --bg-card-color: rgba(255, 255, 255, 0.9);
+  --white: #fff;
+}
