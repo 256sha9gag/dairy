@@ -10,11 +10,11 @@ function ImagesList(props) {
   };
 
   return (
-    <div className={`${styles.imagesGrid} ${className}`} style={gridStyle}>
+    <ul className={`${styles.imagesGrid} ${className}`} style={gridStyle}>
       {notes.map((note, index) => (
         <ImagesItem key={index} imgSrc={note.photo} altText={note.title} imgHeight={imgHeight} />
       ))}
-    </div>
+    </ul>
   );
 }
 

@@ -27,7 +27,7 @@ function Textarea({ className = '' }) {
     return () => {
       textArea.removeEventListener('input', handleResize);
       window.removeEventListener('resize', handleResize);
-    };
+    }; // eslint-disable-next-line
   }, [textAreaRef.current]);
 
   return (
