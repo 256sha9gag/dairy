@@ -1,7 +1,22 @@
 .img {
+  position: relative;
   border-radius: 12px;
-  min-width: 320px;
-  width: 100%;
   object-fit: cover;
   box-shadow: var(--shadow);
+  display: block;
 }
+.selected {
+  display: chocolate;
+}
+.disabled {
+  background-color: #626161;
+}
+.selectOverlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+

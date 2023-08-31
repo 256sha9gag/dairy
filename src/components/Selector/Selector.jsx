@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styles from './Selector.module.css';
 import { emojiIcons } from '../../utils/icons';
 
-function Selector(props) {
+function Selector({value, setValue}) {
   const [isOpen, setIsOpen] = useState(true);
-  const [value, setValue] = useState('');
+  // const [value, setValue] = useState('');
   const handlerChange = (e) => {
     if (e.target.value) {
       setIsOpen(false);

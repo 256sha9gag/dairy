@@ -62,23 +62,42 @@
   height: 160px;
   min-width: 220px;
   background-color: var(--white);
-  border-radius: 12px;
+  border-radius: 10px;
+  overflow: hidden;
   box-shadow: var(--shadow);
   cursor: pointer;
+  transition: all .5s;
+}
+.imageChoose img {
+  object-fit: cover;
 }
 
 .chooseWrapper {
+  opacity: 1;
+  transition: all .5s;
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+  bottom: 0;
+  overflow-y: auto;
   padding: 40px 80px;
   background: rgba(50, 47, 40, 0.7);
   backdrop-filter: blur(5px);
   z-index: 1000;
   box-sizing: border-box;
   min-width: 320px;
+  animation: appear .5s linear;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .chooseBlock {
@@ -121,9 +140,14 @@
     display: none;
   }
 }
+.footerButtons {
+  display: flex;
+  gap: 40px;
+}
 
 @media (max-width: 1023px) {
   .chooseWrapper {
+    padding: 20px 20px;
     height: auto;
   }
 
@@ -146,7 +170,7 @@
 
   .imageChoose {
     order: 1;
-    width: 100%;
+    min-width: 100%;
     height: 200px;
   }
 
@@ -186,8 +210,29 @@
   }
 
   .addNoteButton {
-    width: 100%;
     height: 40px;
     font-size: 12px;
   }
 }
+
+@media (min-width: 500px) {
+  .footerButtonsMobile {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .footerButtons {
+    display: none;
+  }
+  .footerButtonsMobile {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    justify-content: space-between;
+  }
+}
+
+.footerButtonsMobile .addNoteButton {
+  width: 130px;
+}
+

@@ -6,7 +6,6 @@
   padding: 18px 20px;
   gap: 10px;
   border-radius: 10px;
-  background: var(--logo-2);
   box-shadow: var(--shadow);
   cursor: pointer;
 }

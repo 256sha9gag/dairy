@@ -45,7 +45,9 @@ svg {
 }
 
 .App {
+  position: relative;
   padding: 40px;
+  min-height: 100vh;
 }
 
 body {

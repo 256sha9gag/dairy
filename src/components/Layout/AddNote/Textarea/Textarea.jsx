@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import styles from './Textarea.module.css';
 
-function Textarea({ className = '' }) {
+function Textarea({value,setValue, className = '' }) {
   const textAreaRef = useRef(null);
 
   useEffect(() => {
@@ -32,6 +32,8 @@ function Textarea({ className = '' }) {
 
   return (
     <textarea
+			value={value}
+			onChange={(ev)=>setValue(ev.target.value)}
       ref={textAreaRef}
       className={`${styles.textarea} ${className}`}
       placeholder='Описание'

@@ -1,16 +1,14 @@
 import React from 'react';
 import styles from './ImagesItem.module.css';
 
-function ImagesItem({ imgSrc, altText, imgHeight }) {
-  const imgStyle = {
-    height: imgHeight ? `${imgHeight}px` : '220px',
-  };
+function ImagesItem({note, altText}) {
 
-  return (
-    <li>
-      <img className={styles.img} style={imgStyle} src={imgSrc} alt={altText} />
-    </li>
-  );
+
+	return (
+		<>
+			<img className={`${styles.img} `} src={note.photo} alt={altText}/>
+		</>
+	);
 }
 
 export default ImagesItem;
