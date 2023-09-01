@@ -11,6 +11,7 @@ import ImagesList from './ImagesList/ImagesList';
 import {useAppContext} from '../../../context/AppContext';
 import {NotesContext} from "../../../App";
 import {generateRandomString} from "../../../utils/generateRandomString";
+import {debounce} from "../../../utils/debounce";
 
 function AddNote() {
 
@@ -52,7 +53,7 @@ function AddNote() {
 		setActiveComponent('Main');
 	};
 
-	useEffect(() => {
+	const resizeThumbnail = ()=>{
 		if (imageThumbnail.current){
 			if (hiddenImg.current){
 				if (hiddenImg.current.offsetWidth / hiddenImg.current.offsetHeight < 1){
@@ -70,6 +71,12 @@ function AddNote() {
 				imageThumbnail.current.style.width = 'unset'
 			}
 		}
+	}
+
+	useEffect(() => {
+		resizeThumbnail()
+		window.addEventListener('resize', debounce(resizeThumbnail))
+		return ()=>{window.addEventListener('resize', debounce(resizeThumbnail))}
 	}, [selectedItem, imageThumbnail])
 
 	return (<>
