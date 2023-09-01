@@ -9,7 +9,6 @@ import Button from '../../Button/Button';
 import Textarea from './Textarea/Textarea';
 import ImagesList from './ImagesList/ImagesList';
 import {useAppContext} from '../../../context/AppContext';
-import {debounce} from "../../../utils/debounce";
 import {NotesContext} from "../../../App";
 import {generateRandomString} from "../../../utils/generateRandomString";
 
@@ -24,6 +23,7 @@ function AddNote() {
 	const {setActiveComponent} = useAppContext();
 	const [isImageChooseOpen, setIsImageChooseOpen] = useState(false);
 	const imageThumbnail = useRef(null)
+	const hiddenImg = useRef(null)
 
 	const submitHandler = () => {
 		if (selectedItem && titleValue.trim() && dateValue.trim() && emoji.trim() && textValue.trim()) {
@@ -51,38 +51,26 @@ function AddNote() {
 	const handleLogoClick = () => {
 		setActiveComponent('Main');
 	};
-	const resizeImageThumb = debounce(() => {
-		if (selectedItem && imageThumbnail.current.children[0].tagName === 'IMG') {
-			imageThumbnail.current.children[0].style.width = 'unset'
-			imageThumbnail.current.children[0].style.height = 'unset'
-			const aspectRatio = imageThumbnail.current.children[0].offsetWidth / imageThumbnail.current.children[0].offsetHeight
-			if (aspectRatio > 1) {
-				imageThumbnail.current.style.aspectRatio = '28/19'
-				imageThumbnail.current.style.width = '100%'
-				imageThumbnail.current.style.height = 'unset'
-				imageThumbnail.current.children[0].style.width = '100%'
-				imageThumbnail.current.children[0].style.height = '100%'
-
-			} else {
-				imageThumbnail.current.style.aspectRatio = '28/40'
-				imageThumbnail.current.style.width = '100%'
-				imageThumbnail.current.style.height = 'unset'
-				imageThumbnail.current.children[0].style.width = '100%'
-				imageThumbnail.current.children[0].style.height = '100%'
-			}
-		} else {
-			imageThumbnail.current.style.height = '160px'
-			imageThumbnail.current.style.aspectRatio = 'unset'
-			imageThumbnail.current.style.width = 'unset'
-		}
-	})
 
 	useEffect(() => {
-		resizeImageThumb()
-		window.removeEventListener('resize', resizeImageThumb)
-		window.addEventListener('resize', resizeImageThumb)
-		return window.removeEventListener('resize', resizeImageThumb)
-	}, [selectedItem, resizeImageThumb])
+		if (imageThumbnail.current){
+			if (hiddenImg.current){
+				if (hiddenImg.current.offsetWidth / hiddenImg.current.offsetHeight < 1){
+					hiddenImg.current.parentNode.style.aspectRatio = '28/40'
+					hiddenImg.current.parentNode.style.width = '100%'
+					hiddenImg.current.parentNode.style.height = 'unset'
+				} else {
+					hiddenImg.current.parentNode.style.aspectRatio = '28/19'
+					hiddenImg.current.parentNode.style.width = '100%'
+					hiddenImg.current.parentNode.style.height = 'unset'
+				}
+			} else {
+				imageThumbnail.current.style.aspectRatio = 'unset'
+				imageThumbnail.current.style.height = '160px'
+				imageThumbnail.current.style.width = 'unset'
+			}
+		}
+	}, [selectedItem, imageThumbnail])
 
 	return (<>
 			{isImageChooseOpen && (<div className={styles.chooseWrapper} onClick={toggleOpen}>
@@ -131,7 +119,10 @@ function AddNote() {
 							</div>
 						</div>
 						<div ref={imageThumbnail} className={styles.imageChoose} onClick={toggleChooseOpen}>
-							{selectedItem ? <img src={selectedItem.photo} alt={selectedItem.title}/> : <>
+							{selectedItem ? <>
+								<img className={styles.imgThumb} src={selectedItem.photo} alt={selectedItem.title}/>
+								<img className={styles.hiddenImg} ref={hiddenImg} src={selectedItem.photo} alt={selectedItem.title}/>
+							</> : <>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									width='20'
