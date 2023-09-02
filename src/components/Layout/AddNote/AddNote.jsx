@@ -56,15 +56,9 @@ function AddNote() {
 	const resizeThumbnail = ()=>{
 		if (imageThumbnail.current){
 			if (hiddenImg.current){
-				if (hiddenImg.current.offsetWidth / hiddenImg.current.offsetHeight < 1){
-					hiddenImg.current.parentNode.style.aspectRatio = '28/40'
-					hiddenImg.current.parentNode.style.width = '100%'
-					hiddenImg.current.parentNode.style.height = 'unset'
-				} else {
 					hiddenImg.current.parentNode.style.aspectRatio = '28/19'
 					hiddenImg.current.parentNode.style.width = '100%'
 					hiddenImg.current.parentNode.style.height = 'unset'
-				}
 			} else {
 				imageThumbnail.current.style.aspectRatio = 'unset'
 				imageThumbnail.current.style.height = '160px'
