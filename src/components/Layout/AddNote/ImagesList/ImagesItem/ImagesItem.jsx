@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import styles from './ImagesItem.module.css';
 import {debounce} from "../../../../../utils/debounce";
 
-function ImagesItem({note, altText}) {
+function ImagesItem({imgSrc, altText}) {
 	const hiddenImg = useRef(null)
 	const resizeImg = () => {
 		if (hiddenImg.current){
@@ -20,8 +20,8 @@ function ImagesItem({note, altText}) {
 
 	return (
 		<>
-			<img className={`${styles.img} `} src={note.photo} alt={altText}/>
-			<img ref={hiddenImg} className={`${styles.hiddenImg} `} src={note.photo} alt={altText}/>
+			<img className={`${styles.img} `} src={imgSrc} alt={altText}/>
+			<img ref={hiddenImg} className={`${styles.hiddenImg} `} src={imgSrc} alt={altText}/>
 		</>
 	);
 }

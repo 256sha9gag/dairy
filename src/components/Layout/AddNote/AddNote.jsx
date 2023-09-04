@@ -4,7 +4,6 @@ import styles from './AddNote.module.css';
 import Logo from '../../Logo/Logo';
 import Input from '../../Input/Input';
 import Selector from '../../Selector/Selector';
-import startNotes from '../../../utils/notes.json'
 import Button from '../../Button/Button';
 import Textarea from './Textarea/Textarea';
 import ImagesList from './ImagesList/ImagesList';
@@ -12,9 +11,9 @@ import {useAppContext} from '../../../context/AppContext';
 import {NotesContext} from "../../../App";
 import {generateRandomString} from "../../../utils/generateRandomString";
 import {debounce} from "../../../utils/debounce";
+import searchPhotos from '../../../api';
 
 function AddNote() {
-
 	const {notes, setNotes} = useContext(NotesContext)
 	const [selectedItem, setSelectedItem] = useState(null)
 	const [titleValue, setTitleValue] = useState('')
@@ -23,13 +22,23 @@ function AddNote() {
 	const [textValue, setTextValue] = useState('')
 	const {setActiveComponent} = useAppContext();
 	const [isImageChooseOpen, setIsImageChooseOpen] = useState(false);
+	const [images, setImages] = useState();
+	const [isLoading, setisLoading] = useState();
+	const [searchValue, setSearchValue] = useState('')
 	const imageThumbnail = useRef(null)
 	const hiddenImg = useRef(null)
+
+	async function handleSearch() {
+		setisLoading(false);
+		const data = await searchPhotos(searchValue);
+		setImages(data);
+		setisLoading(true);
+	}
 
 	const submitHandler = () => {
 		if (selectedItem && titleValue.trim() && dateValue.trim() && emoji.trim() && textValue.trim()) {
 			setNotes([...notes, {
-				title: titleValue, date: new Date(dateValue), emoji: emoji, note: textValue, photo: selectedItem.photo, id: generateRandomString()
+				title: titleValue, date: new Date(dateValue), emoji: emoji, note: textValue, photo: selectedItem.urls.small, id: generateRandomString()
 			}])
 			setActiveComponent('Main')
 		} else {
@@ -68,6 +77,17 @@ function AddNote() {
 	}
 
 	useEffect(() => {
+		const fetchData = async () => {
+			setisLoading(false);
+      const data = await searchPhotos();
+			setImages(data);
+			setisLoading(true);
+    };
+
+    fetchData();
+	}, []);
+
+	useEffect(() => {
 		resizeThumbnail()
 		window.addEventListener('resize', debounce(resizeThumbnail))
 		return ()=>{window.addEventListener('resize', debounce(resizeThumbnail))}
@@ -77,13 +97,15 @@ function AddNote() {
 			{isImageChooseOpen && (<div className={styles.chooseWrapper} onClick={toggleOpen}>
 					<div className={styles.chooseBlock}>
 						<Input
-							value={'titleValue'}
+							handleSearch={handleSearch}
+							setValue={setSearchValue}
+							value={searchValue}
 							className={`${styles.inputText} ${styles.inputSearchImg}`}
 							type='text'
 							placeholder='Поиск'
 						/>
 						<Button
-							onClick={toggleChooseOpen}
+							onClick={handleSearch}
 							svg={<svg
 								xmlns='http://www.w3.org/2000/svg'
 								width='20'
@@ -105,7 +127,7 @@ function AddNote() {
 						/>
 					</div>
 					<ImagesList selectedItem={selectedItem} setSelectedItem={setSelectedItem} setIsImageChooseOpen={setIsImageChooseOpen}
-											notes={startNotes}
+											images={images} isImageChooseOpen={isImageChooseOpen} isLoading={isLoading}
 											imgHeight={'271'} gap={'40'}/>
 				</div>)}
 			<div className={styles.addNoteWrapper}>
@@ -121,8 +143,8 @@ function AddNote() {
 						</div>
 						<div ref={imageThumbnail} className={styles.imageChoose} onClick={toggleChooseOpen}>
 							{selectedItem ? <>
-								<img className={styles.imgThumb} src={selectedItem.photo} alt={selectedItem.title}/>
-								<img className={styles.hiddenImg} ref={hiddenImg} src={selectedItem.photo} alt={selectedItem.title}/>
+								<img className={styles.imgThumb} src={selectedItem.urls.small} alt={selectedItem.alt_description}/>
+								<img className={styles.hiddenImg} ref={hiddenImg} src={selectedItem.urls.small} alt={selectedItem.alt_description}/>
 							</> : <>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
@@ -220,9 +242,9 @@ function AddNote() {
 				</div>
 				<div className={styles.rightBlock}>
 					<div className={styles.inputButtonBlock}>
-						<Input className={styles.inputText}/>
+						<Input className={styles.inputText} setValue={setSearchValue} value={searchValue} handleSearch={handleSearch}/>
 						<Button // onClick={магия}
-							onClick={toggleChooseOpen}
+							onClick={handleSearch}
 							svg={<svg
 								xmlns='http://www.w3.org/2000/svg'
 								width='20'
@@ -243,8 +265,14 @@ function AddNote() {
 							</svg>}
 						/>
 					</div>
-					<ImagesList selectedItem={selectedItem} setSelectedItem={setSelectedItem} setIsImageChooseOpen={setIsImageChooseOpen}
-											notes={startNotes}/>
+					<ImagesList 
+						selectedItem={selectedItem} 
+						setSelectedItem={setSelectedItem} 
+						setIsImageChooseOpen={setIsImageChooseOpen}
+						images={images} 
+						isImageChooseOpen={isImageChooseOpen}
+						isLoading={isLoading}
+						/>
 				</div>
 			</div>
 		</>);

@@ -2,8 +2,7 @@ import React, { useRef } from 'react';
 import styles from './ImagesList.module.css';
 import ImagesItem from './ImagesItem/ImagesItem';
 
-function ImagesList({notes, className, gap, setIsImageChooseOpen, selectedItem, setSelectedItem}) {
-
+function ImagesList({images, className, gap, setIsImageChooseOpen, selectedItem, setSelectedItem, isImageChooseOpen, isLoading}) {
 	const selectHandler = (item) => {
 		setSelectedItem(() => selectedItem?.id === item.id ? null : item)
 		setTimeout(() => {
@@ -14,17 +13,25 @@ function ImagesList({notes, className, gap, setIsImageChooseOpen, selectedItem, 
 	const gridStyle = {
 		gap: gap ? `${gap}px` : '20px',
 	};
-		return (
-		<ul ref={list} className={`${styles.imagesGrid} ${className}`} style={gridStyle}>
-			{notes.map((note, index) => (
-				<li key={note.id}
-						className={`${styles.listItem} ${selectedItem ? selectedItem.id === note.id ? styles.selectedItem : styles.disabledItem : ''}`}
-						onClick={() => selectHandler(note)}>
-					<ImagesItem note={note} imgSrc={note.photo} altText={note.title}/>
+	
+		return isLoading ? (
+			<ul ref={list} className={`${styles.imagesGrid} ${className}`} style={gridStyle}>
+			{images && images.length !== 0 ? images.map((img) => (
+				<li key={img.id}
+						className={`${styles.listItem} ${selectedItem ? selectedItem.id === img.id ? styles.selectedItem : styles.disabledItem : ''}`}
+						onClick={() => selectHandler(img)}>
+					<ImagesItem imgSrc={img.urls.small} altText={img.alt_description}/>
 				</li>
-			))}
+			)) : (<p 
+				className={!isImageChooseOpen ? styles.warningTextModalOpen : styles.warningTextModalClose }>
+					Ничего не найдено по данному запросу
+					</p>)}
 		</ul>
-	);
+			) : (<p 
+					className={!isImageChooseOpen ? styles.warningTextModalOpen : styles.warningTextModalClose }
+				>
+					Загрузка...
+				</p>)
 }
 
 export default ImagesList;

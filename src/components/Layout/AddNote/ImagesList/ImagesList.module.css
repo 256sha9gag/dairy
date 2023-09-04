@@ -43,6 +43,20 @@
   background-repeat: no-repeat;
 }
 
+.warningTextModalOpen {
+  color: var(--main-text-color);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 21.09px;
+}
+
+.warningTextModalClose {
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 21.09px;
+}
+
 @media (max-width: 500px) {
   .imagesGrid {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));

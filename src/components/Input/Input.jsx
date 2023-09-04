@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Input.module.css';
 
-function Input({value ,setValue, type = 'text', placeholder = 'Поиск', className = '' }) {
+function Input({value, setValue, type = 'text', placeholder = 'Поиск', className = '', handleSearch = null }) {  
+
+  useEffect(() => {
+    if (handleSearch !== null) {
+      handleSearch();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
+
   return (
-    <input type={type} onChange={(ev)=>setValue(ev.target.value)} placeholder={placeholder} value={value} className={`${styles.mainInput} ${className}`} />
+    <input 
+      type={type} 
+      onChange={(ev)=> { 
+        setValue(ev.target.value)
+      }}
+      placeholder={placeholder} 
+      value={value} 
+      className={`${styles.mainInput} 
+      ${className}`} 
+    />
   );
 }
 export default Input;
