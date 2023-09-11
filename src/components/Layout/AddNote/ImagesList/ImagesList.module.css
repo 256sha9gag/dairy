@@ -66,6 +66,7 @@
 .selectedItem:after {
   transform: scale(1);
   opacity: 1;
+  cursor: pointer;
 }
 .disabledItem:before {
   transform: scale(1);

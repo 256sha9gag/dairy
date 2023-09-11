@@ -5,7 +5,12 @@ function Input({value, setValue, type = 'text', placeholder = 'Поиск', clas
 
   useEffect(() => {
     if (handleSearch !== null) {
-      handleSearch();
+      const delay = setTimeout(() => {
+        handleSearch();
+      }, 400)
+      return () => {
+        clearTimeout(delay)
+      }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);

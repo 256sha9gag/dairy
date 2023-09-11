@@ -6,9 +6,11 @@
   object-fit: cover;
   box-shadow: var(--shadow);
   display: block;
+  cursor: pointer;
 }
 .selected {
   display: chocolate;
+
 }
 .disabled {
   background-color: #626161;
