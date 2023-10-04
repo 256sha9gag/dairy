@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/dairy/static/css/main.e9b5337e.css",
+    "main.js": "/dairy/static/js/main.5a7ece5d.js",
+    "static/media/picked.svg": "/dairy/static/media/picked.a2f7b27f4be24fefd47a.svg",
+    "index.html": "/dairy/index.html",
+    "main.e9b5337e.css.map": "/dairy/static/css/main.e9b5337e.css.map",
+    "main.5a7ece5d.js.map": "/dairy/static/js/main.5a7ece5d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e9b5337e.css",
+    "static/js/main.5a7ece5d.js"
+  ]
+}
