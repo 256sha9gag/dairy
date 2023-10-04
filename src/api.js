@@ -1,9 +1,10 @@
 const searchPhotos = async (query = 'животные') => {
-  const YOUR_ACCESS_KEYS = ['6TYxnQnUnfUXAwBUU6egADwGHxrMqbTIlONTY1XQO0k', 
-  'IIc8AorkcFuKHlwcmQaxFSZm6p5QwWChwkpb1351Rds',
-  'T6O2SHB40-lg3lcxgCCaH6VNv3eZu6Fxfs_z4UIsomE',
-  'RVD4JwkjaasBGKQJUMWTnn-o7_qGv5EpeKvNshj3M_4',
-  'IRywC-5lPfHVzhEZ7vPe7ehMhSpcEO0UeetQYu-qDNM']
+  const YOUR_ACCESS_KEYS = [
+    process.env.REACT_APP_APIKEY1, 
+    process.env.REACT_APP_APIKEY2,
+    process.env.REACT_APP_APIKEY3,
+    process.env.REACT_APP_APIKEY4,
+  ]
   const accessKey = YOUR_ACCESS_KEYS[Math.floor(Math.random() * YOUR_ACCESS_KEYS.length)];
 
   const url = `https://api.unsplash.com/search/photos?query=${query === '' ? 'животные' : query}&page=1`;
